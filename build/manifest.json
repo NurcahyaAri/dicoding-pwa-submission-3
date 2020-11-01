@@ -4,8 +4,8 @@
     "description": "Football Information",
     "start_url": "/",
     "display": "standalone",
-    "background_color": "#fa2070",
-    "theme_color": "#fa2070",
+    "background_color": "#121212",
+    "theme_color": "#121212",
     "gcm_sender_id": "212518144410",
     "icons": [
         {
