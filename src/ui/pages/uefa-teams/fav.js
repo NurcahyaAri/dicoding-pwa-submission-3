@@ -1,3 +1,5 @@
+/* eslint-disable no-restricted-globals */
+/* eslint-disable no-restricted-syntax */
 import { getAllTeams, deleteFavorit } from '../../../utils/db';
 import { template as baseLayout, injectableContent } from '../../container/base_layout';
 import { DoneToast, ErrorToast } from '../../components/toast';
@@ -12,14 +14,14 @@ const template = `
 `;
 
 const script = async () => {
-    const getAllFavTeams = async () => {
-        const data = await getAllTeams();
-        document.querySelector('#uefaTeams').innerHTML = "";
-        console.log(data);
-        let teamsDOM = '';
-        if (data.length > 0) {
-            teamsDOM = data.map((item) => {
-            const html = `
+  const getAllFavTeams = async () => {
+    const data = await getAllTeams();
+    document.querySelector('#uefaTeams').innerHTML = '';
+    console.log(data);
+    let teamsDOM = '';
+    if (data.length > 0) {
+      teamsDOM = data.map((item) => {
+        const html = `
                 <style>
                     .button:hover {
                     opacity: 0.7;
@@ -59,47 +61,49 @@ const script = async () => {
                     </div>
                 </div>
                 `;
-            return html;
-            }).join().replaceAll(',', '');
-        } else {
-            teamsDOM = `
+        return html;
+      }).join().replaceAll(',', '');
+    } else {
+      teamsDOM = `
             <div style="display: flex; flex: 1;justify-content: center; align-items: center; font-size:14pt">
                 <p>Data Kosong  </p>
             </div>
             `;
-        }
-        
-        document.querySelector('#uefaTeams').innerHTML = teamsDOM;
     }
-    await getAllFavTeams();
 
-    const deleteData = document.getElementsByClassName('delete-teams');
-    
-    for (const d of deleteData) {
-        d.addEventListener('click', async (e) => {
-            const c = confirm('Mau menghapus');
-            if (c) {
-                const id = parseInt(e.target.dataset.id, 10);
-                const res = await deleteFavorit(id);
-                if (res) {
-                    DoneToast('Berhasil menghapus data');
-                    // window.location.reload();
-                } else {
-                    ErrorToast('Gagal menghapus data');
-                }
-                await script();
-            }
-        });
+    document.querySelector('#uefaTeams').innerHTML = teamsDOM;
+  };
+  await getAllFavTeams();
+
+  const deleteData = document.getElementsByClassName('delete-teams');
+
+  const clickHandler = async (e) => {
+    const c = confirm('Mau menghapus');
+    if (c) {
+      const id = parseInt(e.target.dataset.id, 10);
+      const res = await deleteFavorit(id);
+      if (res) {
+        DoneToast('Berhasil menghapus data');
+        // window.location.reload();
+      } else {
+        ErrorToast('Gagal menghapus data');
+      }
+      await script();
     }
-}
+  };
+
+  for (const d of deleteData) {
+    d.addEventListener('click', clickHandler);
+  }
+};
 
 const renderTemplate = () => {
-    const layout = baseLayout.replace(injectableContent, template);
+  const layout = baseLayout.replace(injectableContent, template);
 
-    // inject js
-    script();
+  // inject js
+  script();
 
-    return layout;
-}
+  return layout;
+};
 
 export default renderTemplate;

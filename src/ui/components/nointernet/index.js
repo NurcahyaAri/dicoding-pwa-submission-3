@@ -2,7 +2,7 @@ import './style.css';
 
 const template = `
     <div class="loading-wrapper">
-        <p>Loading...</p>
+        <p>You're not connected to the network...</p>
     </div>
 `;
 

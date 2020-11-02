@@ -9,8 +9,8 @@ const template = `
 `;
 
 const renderTemplate = () => {
-    const layout = baseLayout.replace(injectableContent, template);
-    return layout;
-}
+  const layout = baseLayout.replace(injectableContent, template);
+  return layout;
+};
 
 export default renderTemplate;

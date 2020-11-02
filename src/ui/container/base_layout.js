@@ -1,5 +1,5 @@
-import { renderNavigation } from '../components/nav';
-import { injectableContent } from './injectable';
+import renderNavigation from '../components/nav';
+import injectableContent from './injectable';
 
 const template = `
     <!-- Navigasi -->
@@ -21,6 +21,6 @@ const template = `
 `;
 
 export {
-    template,
-    injectableContent,
+  template,
+  injectableContent,
 };

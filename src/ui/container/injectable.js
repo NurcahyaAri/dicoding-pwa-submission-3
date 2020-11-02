@@ -1,6 +1,6 @@
 const injectableContent = '#injectable-content';
-const injectableNav = '#injectable-nav';
+// const injectableNav = '#injectable-nav';
 
-export {
-    injectableContent,
+export default {
+  injectableContent,
 };

@@ -9,8 +9,7 @@ import ServiceWorkerRegistry from './utils/service-worker-registry';
 
 ServiceWorkerRegistry();
 
-(function() {
-    // Register all route
-    Route();
-
-})();
+(function () {
+  // Register all route
+  Route();
+}());

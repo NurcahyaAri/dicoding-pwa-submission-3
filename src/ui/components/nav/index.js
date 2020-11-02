@@ -13,18 +13,14 @@ const template = `
     <li><a class="waves-effect" href="#/about">About</a></li>
 `;
 
-const renderNavigation = () => {
-    return template;
-}
+const renderNavigation = () => template;
 
-export {
-    renderNavigation,
-};
+export default renderNavigation;
 
 // const loadNav = async () => {
 //     // const f = await fetch('src/ui/components/nav/nav.html');
 //     const nav = `
-        
+
 //     `;
 
 //     document.querySelectorAll('.topnav, .sidenav').forEach(elm => {
