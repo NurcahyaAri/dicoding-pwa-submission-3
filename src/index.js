@@ -1,9 +1,8 @@
 // running when window is ready
 import Route from './utils/route';
 
-import './assets/css/materialize.min.css';
-import './assets/js/materialize.min';
-import './assets/js/idb';
+import 'materialize-css/dist/css/materialize.min.css';
+import 'materialize-css/dist/js/materialize.min';
 
 // register service worker
 import ServiceWorkerRegistry from './utils/service-worker-registry';

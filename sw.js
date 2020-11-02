@@ -11,10 +11,7 @@ if (workbox) {
     // precaching 
     // workbox.core.skipWaiting();
     // workbox.precaching.precacheAndRoute([]); 
-    workbox.precaching.precacheAndRoute([{
-            url: 'assets/css/materialize.min.css',
-            revision: 1
-        },
+    workbox.precaching.precacheAndRoute([
         {
             url: 'assets/img/logo.jpg',
             revision: 1
@@ -40,10 +37,6 @@ if (workbox) {
             revision: 1
         },
         {
-            url: 'assets/js/materialize.min.js',
-            revision: 1
-        },
-        {
             url: 'main.css',
             revision: 1
         },
@@ -54,10 +47,6 @@ if (workbox) {
         {
             url: 'manifest.json',
             revision: 1
-        },
-        {
-            url: 'main.css',
-            revision: 1,
         },
         {
             url: 'index.html',

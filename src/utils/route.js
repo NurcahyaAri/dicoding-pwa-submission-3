@@ -6,9 +6,7 @@ import FavoriteTeams from '../ui/pages/uefa-teams/fav';
 
 const initNavbar = () => {
     const elems = document.querySelectorAll('.sidenav');
-    // eslint-disable-next-line no-undef
     M.Sidenav.init(elems);
-
 
     document
         .querySelectorAll('.sidenav a, .topnav a')

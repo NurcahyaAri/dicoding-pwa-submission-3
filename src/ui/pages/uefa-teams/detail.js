@@ -1,5 +1,6 @@
 import config from '../../../config/app';
-import { addToFavorit } from '../../../utils/db';
+import { addToFavorit, getTeamsByID as getTeamsByIDFromDB } from '../../../utils/db';
+import { DoneToast, ErrorToast } from '../../components/toast';
 
 import {
     template as baseLayout,
@@ -312,10 +313,27 @@ const script = async ({
         return data;
     }
     const teams = await getTeamsByID();
+    console.log(teams);
     const like = document.getElementById("like");
-    like.onclick = () => {
+    like.onclick = async () => {
         console.log("Tambahkan ke favorit");
-        addToFavorit(teams);
+        const teamInDB = await getTeamsByIDFromDB(teams.id);
+        console.log('teams');
+        console.log(teamInDB);
+
+        if (!teamInDB) {
+            console.log('ada');
+            const res = await addToFavorit(teams);
+            console.log(res);
+            if (res) {
+                DoneToast('Berhasil manambahkan data ke database');
+            } else {
+                ErrorToast('Error saat menambahkan data ke database')
+            }
+        } else {
+            console.log('tidak ada');
+            ErrorToast('Data sudah ada di Database');
+        }
     }
 };
 
